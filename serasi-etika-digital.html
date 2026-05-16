@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERASI – Buku Saku Etika Digital | PAP UNM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3d2b;
+    --green-mid: #2d6a4f;
+    --green-light: #52b788;
+    --gold: #d4a017;
+    --gold-light: #f4c842;
+    --cream: #faf7f0;
+    --warm-white: #fff9f0;
+    --text-dark: #1a1a18;
+    --text-mid: #3d3d38;
+    --text-light: #7a7a72;
+    --red-soft: #c0392b;
+    --blue-soft: #1a6b8a;
+    --border: rgba(26,61,43,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,61,43,0.97);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex; gap: 6px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 0.78rem; font-weight: 500;
+    padding: 6px 12px; border-radius: 20px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em; text-transform: uppercase;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.12); color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-deep);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: 60px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(82,183,136,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(212,160,23,0.12) 0%, transparent 60%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.025) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.025) 80px);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 60px 40px;
+    max-width: 780px;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(212,160,23,0.18);
+    border: 1px solid rgba(212,160,23,0.4);
+    color: var(--gold-light); font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 6px 18px; border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900; color: white;
+    line-height: 0.9; letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .hero-title span { color: var(--gold-light); }
+  .hero-tagline {
+    font-size: 1rem; font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .hero-tagline strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+  .hero-desc {
+    font-size: 1.05rem; color: rgba(255,255,255,0.65);
+    line-height: 1.7; max-width: 520px; margin: 0 auto 40px;
+  }
+  .hero-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 0 auto 32px;
+  }
+  .hero-meta {
+    font-size: 0.78rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--gold);
+    color: var(--green-deep); font-weight: 700;
+    padding: 14px 32px; border-radius: 4px;
+    text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 16px;
+    transition: all 0.2s;
+    box-shadow: 0 8px 32px rgba(212,160,23,0.3);
+  }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 40px; max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--green-mid); margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--green-deep);
+    margin-bottom: 20px;
+  }
+  .section-lead {
+    font-size: 1.05rem; color: var(--text-mid);
+    line-height: 1.75; max-width: 640px;
+    margin-bottom: 50px;
+  }
+
+  /* ── PILAR CARDS ── */
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin-bottom: 20px;
+  }
+  .pillars-grid-bottom { grid-template-columns: repeat(3, 1fr); }
+  .pillar-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .pillar-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--green-mid), var(--gold));
+  }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,61,43,0.12); }
+  .pillar-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: var(--green-light); opacity: 0.25;
+    position: absolute; top: 12px; right: 16px;
+    line-height: 1;
+  }
+  .pillar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--green-deep); margin-bottom: 8px;
+  }
+  .pillar-desc { font-size: 0.84rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ── BAB TABS ── */
+  .tab-nav {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-bottom: 36px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--text-light);
+    padding: 10px 18px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s; white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .tab-btn:hover { color: var(--green-mid); }
+  .tab-btn.active { color: var(--green-deep); border-bottom-color: var(--green-mid); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── CONTENT BLOCKS ── */
+  .content-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .content-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; color: var(--green-deep);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-block ul {
+    list-style: none; padding: 0;
+  }
+  .content-block ul li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 0.9rem; color: var(--text-mid);
+    line-height: 1.6; border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .content-block ul li:last-child { border-bottom: none; }
+  .content-block ul li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--green-light); font-weight: 700;
+  }
+
+  .do-dont {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 16px;
+  }
+  .do-box, .dont-box {
+    border-radius: 6px; padding: 16px;
+  }
+  .do-box {
+    background: rgba(82,183,136,0.08);
+    border: 1px solid rgba(82,183,136,0.3);
+  }
+  .dont-box {
+    background: rgba(192,57,43,0.05);
+    border: 1px solid rgba(192,57,43,0.2);
+  }
+  .do-box .box-label { color: var(--green-mid); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .dont-box .box-label { color: var(--red-soft); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .do-box li, .dont-box li {
+    font-size: 0.85rem; color: var(--text-mid);
+    padding: 4px 0 4px 16px;
+    position: relative; line-height: 1.5;
+    border-bottom: none !important;
+  }
+  .do-box li::before { content: '✓'; color: var(--green-mid) !important; }
+  .dont-box li::before { content: '✗'; color: var(--red-soft) !important; }
+
+  .info-box {
+    background: rgba(26,61,43,0.05);
+    border-left: 3px solid var(--green-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 18px;
+    margin: 16px 0;
+    font-size: 0.88rem; color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .info-box strong { color: var(--green-deep); }
+
+  .example-good {
+    background: rgba(82,183,136,0.06);
+    border: 1px solid rgba(82,183,136,0.25);
+    border-radius: 6px; padding: 16px 18px; margin: 12px 0;
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.65;
+  }
+  .example-bad {
+    background: rgba(192,57,43,0.05);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-radius: 6px; padding: 16px 18px; margin: 12px 0;
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.65;
+  }
+  .ex-label { font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .ex-label.good { color: var(--green-mid); }
+  .ex-label.bad { color: var(--red-soft); }
+
+  /* Message structure */
+  .msg-structure {
+    border: 1px solid var(--border);
+    border-radius: 6px; overflow: hidden; margin: 16px 0;
+  }
+  .msg-row {
+    display: grid; grid-template-columns: 100px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .msg-row:last-child { border-bottom: none; }
+  .msg-key {
+    background: var(--green-deep); color: white;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 10px 14px;
+    display: flex; align-items: center;
+  }
+  .msg-val {
+    padding: 10px 14px; font-size: 0.85rem;
+    color: var(--text-mid); line-height: 1.5;
+  }
+
+  /* Table */
+  .etika-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.85rem; margin: 16px 0;
+  }
+  .etika-table th {
+    background: var(--green-deep); color: white;
+    padding: 10px 14px; text-align: left;
+    font-weight: 600; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .etika-table td {
+    padding: 10px 14px; color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .etika-table tr:hover td { background: rgba(82,183,136,0.04); }
+
+  /* ── SKENARIO ── */
+  .scenario-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; margin-bottom: 24px;
+  }
+  .scenario-header {
+    background: var(--green-deep); color: white;
+    padding: 16px 24px;
+  }
+  .scenario-header .scenario-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.15em; color: var(--gold-light);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .scenario-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+  }
+  .scenario-body { padding: 20px 24px; }
+  .scenario-situation {
+    background: rgba(26,107,138,0.06);
+    border-left: 3px solid var(--blue-soft);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px; margin-bottom: 16px;
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.6;
+  }
+  .option-list { list-style: none; padding: 0; }
+  .option-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 12px; border-radius: 6px;
+    margin-bottom: 8px; font-size: 0.88rem; line-height: 1.5;
+    cursor: default;
+  }
+  .option-item.correct { background: rgba(82,183,136,0.1); border: 1px solid rgba(82,183,136,0.3); }
+  .option-item.wrong { background: rgba(192,57,43,0.05); border: 1px solid rgba(192,57,43,0.15); }
+  .opt-tag {
+    font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .correct .opt-tag { background: var(--green-light); color: white; }
+  .wrong .opt-tag { background: rgba(192,57,43,0.15); color: var(--red-soft); }
+  .scenario-explanation {
+    background: rgba(212,160,23,0.08);
+    border: 1px solid rgba(212,160,23,0.25);
+    border-radius: 6px; padding: 14px 16px;
+    margin-top: 12px; font-size: 0.85rem; color: var(--text-mid); line-height: 1.6;
+  }
+  .scenario-explanation strong { color: var(--green-deep); }
+
+  /* ── QUIZ ── */
+  #kuis { background: var(--green-deep); padding: 80px 40px; }
+  #kuis .quiz-inner { max-width: 760px; margin: 0 auto; }
+  #kuis .section-title { color: white; }
+  #kuis .section-label { color: var(--gold-light); }
+  .quiz-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 24px;
+    margin-bottom: 20px;
+  }
+  .quiz-q {
+    font-size: 0.95rem; color: rgba(255,255,255,0.9);
+    line-height: 1.6; margin-bottom: 16px; font-weight: 500;
+  }
+  .quiz-opts { list-style: none; padding: 0; }
+  .quiz-opt {
+    padding: 10px 14px; border-radius: 6px;
+    margin-bottom: 8px; cursor: pointer;
+    font-size: 0.88rem; color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.2s; user-select: none;
+  }
+  .quiz-opt:hover { background: rgba(255,255,255,0.08); color: white; border-color: rgba(255,255,255,0.25); }
+  .quiz-opt.selected-correct { background: rgba(82,183,136,0.25); border-color: var(--green-light); color: white; }
+  .quiz-opt.selected-wrong { background: rgba(192,57,43,0.2); border-color: rgba(192,57,43,0.5); color: rgba(255,255,255,0.8); }
+  .quiz-opt.show-correct { background: rgba(82,183,136,0.15); border-color: var(--green-light); }
+  .quiz-feedback {
+    margin-top: 10px; font-size: 0.82rem; padding: 8px 12px;
+    border-radius: 4px; display: none;
+  }
+  .quiz-feedback.correct-fb { background: rgba(82,183,136,0.15); color: #74c69d; display: block; }
+  .quiz-feedback.wrong-fb { background: rgba(192,57,43,0.15); color: #e07b72; display: block; }
+
+  .quiz-result {
+    background: rgba(212,160,23,0.12);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 10px; padding: 28px;
+    text-align: center; display: none; margin-top: 20px;
+  }
+  .quiz-result .result-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-weight: 900;
+    color: var(--gold-light); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quiz-result .result-msg { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.6; }
+  .quiz-submit-btn {
+    background: var(--gold); color: var(--green-deep);
+    border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 36px; border-radius: 4px;
+    margin-top: 24px; transition: all 0.2s;
+  }
+  .quiz-submit-btn:hover { background: var(--gold-light); }
+
+  /* ── PENULIS ── */
+  .author-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 10px; padding: 36px;
+    display: grid; grid-template-columns: auto 1fr; gap: 32px;
+    align-items: start;
+  }
+  .author-avatar {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: white; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+  .author-role { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+  .author-details {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .author-detail { font-size: 0.82rem; color: var(--text-mid); }
+  .author-detail span { color: var(--text-light); font-size: 0.75rem; display: block; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 36px 40px;
+    font-size: 0.8rem; line-height: 1.8;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    border: none; border-top: 1px solid var(--border);
+    max-width: 960px; margin: 0 auto;
+  }
+
+  /* Scroll fade-in */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .do-dont { grid-template-columns: 1fr; }
+    .msg-row { grid-template-columns: 80px 1fr; }
+    .author-card { grid-template-columns: 1fr; }
+    .author-details { grid-template-columns: 1fr; }
+    #kuis { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">SERASI</div>
+  <ul class="nav-links">
+    <li><a href="#pengantar">Pengantar</a></li>
+    <li><a href="#pilar">Pilar</a></li>
+    <li><a href="#panduan">Panduan</a></li>
+    <li><a href="#skenario">Skenario</a></li>
+    <li><a href="#kuis">Kuis</a></li>
+    <li><a href="#penulis">Penulis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Buku Saku Etika Digital • Prodi PAP UNM</div>
+    <h1 class="hero-title"><span>S</span>ERASI</h1>
+    <p class="hero-tagline"><strong>Semai Etika,</strong> Raih Akademik Sehat Ideal</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">Panduan etika akademik mahasiswa Program Studi Pendidikan Administrasi Perkantoran, Universitas Negeri Makassar. Profesional, beretika, dan saling menghargai.</p>
+    <a href="#pengantar" class="hero-cta">Mulai Membaca →</a>
+    <p class="hero-meta" style="margin-top:40px">Disusun oleh Nurfadila, M.M. &nbsp;·&nbsp; Fakultas Ilmu Sosial dan Hukum, UNM &nbsp;·&nbsp; 2026</p>
+  </div>
+</div>
+
+<!-- PENGANTAR -->
+<section id="pengantar" class="fade-in">
+  <div class="section-label">Bab I – Pendahuluan</div>
+  <h2 class="section-title">Mengapa Etika Akademik Penting?</h2>
+  <p class="section-lead">Lingkungan akademik perguruan tinggi adalah ruang interaksi yang seharusnya berlandaskan kesopanan, saling menghargai, dan profesionalisme. Buku Saku SERASI hadir sebagai panduan praktis bagi mahasiswa PAP UNM.</p>
+
+  <div class="info-box">
+    <strong>📌 Fakta di Lapangan:</strong> Hasil observasi di Prodi PAP UNM menunjukkan bahwa beberapa mahasiswa masih kurang menyadari pentingnya etika akademik dalam interaksi sehari-hari, baik secara langsung maupun melalui media digital.
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-top:32px">
+    <div class="content-block" style="margin:0; border-left:3px solid var(--green-light)">
+      <h3 style="border:none;padding:0;margin-bottom:10px;font-size:0.95rem">🎯 Bagi Mahasiswa</h3>
+      <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">Membentuk karakter profesional, meningkatkan kualitas interaksi, dan membangun reputasi positif.</p>
+    </div>
+    <div class="content-block" style="margin:0; border-left:3px solid var(--gold)">
+      <h3 style="border:none;padding:0;margin-bottom:10px;font-size:0.95rem">👨‍🏫 Bagi Dosen</h3>
+      <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">Menciptakan suasana belajar yang kondusif dan memudahkan proses transfer ilmu secara efektif.</p>
+    </div>
+    <div class="content-block" style="margin:0; border-left:3px solid var(--blue-soft)">
+      <h3 style="border:none;padding:0;margin-bottom:10px;font-size:0.95rem">🏛️ Bagi Institusi</h3>
+      <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">Membangun budaya akademik berkualitas dan menjaga nama baik program studi serta universitas.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PILAR -->
+<section id="pilar" class="fade-in">
+  <div class="section-label">Bab II – Etika Akademik</div>
+  <h2 class="section-title">Lima Pilar Etika Akademik<br>SERASI</h2>
+  <p class="section-lead">SERASI berdiri di atas lima pilar utama etika akademik yang saling melengkapi, membentuk fondasi interaksi akademik yang sehat dan profesional.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar-card"><div class="pillar-letter">S</div><div class="pillar-name">S – Sopan Santun</div><p class="pillar-desc">Bertutur kata dan bersikap santun dalam setiap interaksi akademik, baik langsung maupun digital.</p></div>
+    <div class="pillar-card"><div class="pillar-letter">E</div><div class="pillar-name">E – Empati</div><p class="pillar-desc">Memahami posisi dan perasaan dosen serta sesama mahasiswa dalam konteks akademik profesional.</p></div>
+    <div class="pillar-card"><div class="pillar-letter">R</div><div class="pillar-name">R – Responsif</div><p class="pillar-desc">Merespons arahan, pertanyaan, dan komunikasi dosen secara tepat waktu dan bertanggung jawab.</p></div>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card"><div class="pillar-letter">A</div><div class="pillar-name">A – Akuntabel</div><p class="pillar-desc">Bertanggung jawab penuh atas setiap tindakan, ucapan, dan karya akademik yang dihasilkan.</p></div>
+    <div class="pillar-card"><div class="pillar-letter">S</div><div class="pillar-name">S – Santun Digital</div><p class="pillar-desc">Menerapkan etika komunikasi yang profesional di seluruh platform dan media digital akademik.</p></div>
+    <div class="pillar-card"><div class="pillar-letter">I</div><div class="pillar-name">I – Integritas</div><p class="pillar-desc">Menjunjung tinggi kejujuran, anti-plagiarisme, dan menolak segala bentuk kecurangan akademik.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PANDUAN -->
+<section id="panduan" class="fade-in">
+  <div class="section-label">Bab III, IV & V – Panduan Etika</div>
+  <h2 class="section-title">Panduan Lengkap Etika Akademik</h2>
+  <p class="section-lead">Pelajari etika komunikasi langsung dengan dosen, etika digital, dan kegiatan belajar mengajar secara menyeluruh.</p>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('komunikasi-langsung', this)">Komunikasi Langsung</button>
+    <button class="tab-btn" onclick="showTab('komunikasi-digital', this)">Komunikasi Digital</button>
+    <button class="tab-btn" onclick="showTab('kegiatan-kelas', this)">Kegiatan Kelas</button>
+    <button class="tab-btn" onclick="showTab('integritas', this)">Integritas Akademik</button>
+  </div>
+
+  <!-- TAB: Komunikasi Langsung -->
+  <div id="komunikasi-langsung" class="tab-panel active">
+    <div class="content-block">
+      <h3>Adab Berbicara dengan Dosen di Kampus</h3>
+      <ul>
+        <li>Gunakan sapaan sopan: "Selamat pagi/siang, Pak/Bu [nama dosen]" saat memulai percakapan.</li>
+        <li>Gunakan Bahasa Indonesia yang baik dan benar; hindari bahasa gaul dan singkatan informal.</li>
+        <li>Jaga kontak mata yang wajar sebagai tanda perhatian dan rasa hormat.</li>
+        <li>Hindari memotong pembicaraan dosen. Tunggu giliran berbicara dengan sabar.</li>
+        <li>Sampaikan pendapat dengan kalimat yang jelas, terstruktur, dan tidak menyinggung.</li>
+        <li>Ucapkan terima kasih setelah mendapatkan penjelasan atau arahan.</li>
+      </ul>
+      <div class="example-good"><div class="ex-label good">✅ Contoh Baik</div>"Permisi, Pak/Bu. Selamat siang. Saya Nurfadila dari kelas A. Bolehkah saya menanyakan sesuatu mengenai tugas yang diberikan kemarin? Apakah Bapak/Ibu sedang ada waktu?"</div>
+      <div class="example-bad"><div class="ex-label bad">❌ Hindari</div>Langsung menyela dosen yang sedang berbicara, menggunakan kata-kata seperti "Pak cepat dong" atau berbicara sambil menatap layar ponsel.</div>
+    </div>
+
+    <div class="content-block">
+      <h3>Etika Menghadap Dosen di Ruangan/Kantor</h3>
+      <ul>
+        <li>Datang sesuai janji atau jam kerja. Jangan datang mendadak tanpa konfirmasi.</li>
+        <li>Ketuk pintu dan minta izin masuk: "Permisi, Pak/Bu. Boleh saya masuk?"</li>
+        <li>Sampaikan maksud kedatangan dengan singkat, jelas, dan sopan.</li>
+        <li>Bawa berkas atau dokumen yang relevan agar pertemuan lebih efektif.</li>
+        <li>Matikan atau silence ponsel selama pertemuan berlangsung.</li>
+        <li>Pamit dengan sopan: "Terima kasih atas waktunya, Pak/Bu."</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h3>Sopan Santun Saat Jam Perkuliahan</h3>
+      <div class="do-dont">
+        <div class="do-box">
+          <div class="box-label">✅ Yang Harus Dilakukan</div>
+          <ul>
+            <li>Hadir tepat waktu sebelum dosen masuk</li>
+            <li>Aktif mencatat materi perkuliahan</li>
+            <li>Menyalakan kamera saat perkuliahan daring</li>
+            <li>Bertanya dengan mengangkat tangan terlebih dahulu</li>
+            <li>Mohon izin jika harus meninggalkan kelas</li>
+            <li>Mengumpulkan tugas tepat waktu</li>
+          </ul>
+        </div>
+        <div class="dont-box">
+          <div class="box-label">❌ Yang Harus Dihindari</div>
+          <ul>
+            <li>Datang terlambat tanpa izin atau alasan jelas</li>
+            <li>Bermain ponsel saat dosen menjelaskan</li>
+            <li>Mematikan kamera tanpa alasan saat daring</li>
+            <li>Memotong penjelasan dosen secara tiba-tiba</li>
+            <li>Keluar masuk kelas tanpa permisi</li>
+            <li>Mengumpulkan tugas terlambat tanpa komunikasi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Etika Saat Bimbingan Skripsi / Tugas Akhir</h3>
+      <ul>
+        <li>Buat janji bimbingan terlebih dahulu melalui saluran komunikasi yang disepakati.</li>
+        <li>Persiapkan materi bimbingan dengan matang sebelum datang. Jangan datang dengan tangan kosong.</li>
+        <li>Catat setiap masukan, koreksi, dan arahan yang diberikan dosen pembimbing.</li>
+        <li>Tindaklanjuti hasil bimbingan dan laporkan perkembangannya pada bimbingan berikutnya.</li>
+        <li>Hormati waktu dosen pembimbing. Jangan melebihi waktu yang disepakati tanpa izin.</li>
+        <li>Ucapkan terima kasih atas setiap bimbingan dan dedikasi waktu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB: Komunikasi Digital -->
+  <div id="komunikasi-digital" class="tab-panel">
+    <div class="content-block">
+      <h3>Prinsip Dasar Komunikasi Digital (Netiquette)</h3>
+      <table class="etika-table">
+        <thead><tr><th>Prinsip</th><th>Penjelasan Praktis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tepat Waktu</strong></td><td>Kirim pesan pada jam yang wajar (07.00–20.00 WIB). Hindari mengirim pesan di luar jam tersebut kecuali sangat mendesak.</td></tr>
+          <tr><td><strong>Jelas & Singkat</strong></td><td>Sampaikan maksud secara langsung dan terstruktur. Hindari pesan yang bertele-tele atau ambigu.</td></tr>
+          <tr><td><strong>Sopan & Formal</strong></td><td>Gunakan bahasa formal, salam pembuka, dan penutup yang sopan dalam setiap pesan kepada dosen.</td></tr>
+          <tr><td><strong>Identitas Jelas</strong></td><td>Selalu sertakan nama lengkap, kelas/angkatan, dan program studi di setiap pesan kepada dosen.</td></tr>
+          <tr><td><strong>Sabar & Hormat</strong></td><td>Berikan waktu yang cukup untuk dosen merespons. Hindari mengirim pesan berulang jika belum dibalas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="content-block">
+      <h3>Struktur Pesan WhatsApp/Telegram yang Baik</h3>
+      <div class="msg-structure">
+        <div class="msg-row"><div class="msg-key">SALAM</div><div class="msg-val">Assalamu'alaikum Wr. Wb. / Selamat pagi/siang/sore, Pak/Bu [nama dosen].</div></div>
+        <div class="msg-row"><div class="msg-key">IDENTITAS</div><div class="msg-val">Saya [Nama Lengkap], mahasiswa Prodi PAP UNM, Kelas [kelas], Angkatan [tahun].</div></div>
+        <div class="msg-row"><div class="msg-key">TUJUAN</div><div class="msg-val">Saya ingin bertanya/menyampaikan mengenai [topik yang jelas dan spesifik].</div></div>
+        <div class="msg-row"><div class="msg-key">PESAN</div><div class="msg-val">Sampaikan isi pesan dengan singkat, padat, dan jelas dalam 2–4 kalimat.</div></div>
+        <div class="msg-row"><div class="msg-key">PENUTUP</div><div class="msg-val">Terima kasih atas waktu dan perhatian Bapak/Ibu. Wassalamu'alaikum Wr. Wb.</div></div>
+      </div>
+      <div class="example-good"><div class="ex-label good">✅ Contoh Pesan yang Baik</div>Assalamu'alaikum Wr. Wb. Selamat siang, Bu Nurfadila. Perkenalkan, saya Rahmi Azzahra, mahasiswa PAP UNM Kelas A Angkatan 2023. Saya ingin menanyakan mengenai format pengumpulan tugas presentasi Bab 3 yang dijadwalkan pada Jumat ini. Apakah dikumpul via Google Drive atau langsung ke email Ibu? Terima kasih atas perhatiannya, Bu. Wassalamu'alaikum Wr. Wb.</div>
+      <div class="example-bad"><div class="ex-label bad">❌ Contoh Pesan yang Perlu Diperbaiki</div>"Halo pak" / "Pak tugas kapan dikumpul" / "Hei bu, maaf lupa perkenalan diri. Tugasnya gmn?" — Tidak ada salam, identitas, dan menggunakan bahasa informal.</div>
+    </div>
+
+    <div class="content-block">
+      <h3>Etika di Platform Perkuliahan Daring</h3>
+      <table class="etika-table">
+        <thead><tr><th>Platform</th><th>Etika yang Harus Diterapkan</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Zoom / Google Meet</strong></td><td>Aktifkan kamera selama perkuliahan. Gunakan nama asli. Matikan mikrofon jika tidak berbicara.</td></tr>
+          <tr><td><strong>LMS / SYAM-OK</strong></td><td>Unggah tugas sebelum batas waktu. Ikuti instruksi pengumpulan dengan teliti dan lengkap.</td></tr>
+          <tr><td><strong>Grup WhatsApp Kelas</strong></td><td>Hanya gunakan untuk keperluan akademik. Hindari spam, forward berita tidak jelas, atau diskusi di luar konteks kuliah.</td></tr>
+          <tr><td><strong>Google Classroom</strong></td><td>Baca setiap pengumuman dengan seksama. Respons jika ada konfirmasi kehadiran dari dosen.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Kegiatan Kelas -->
+  <div id="kegiatan-kelas" class="tab-panel">
+    <div class="content-block">
+      <h3>Etika Kehadiran dan Disiplin di Kelas</h3>
+      <ul>
+        <li>Hadir minimal 75% dari total pertemuan sebagai syarat mengikuti ujian akhir semester.</li>
+        <li>Datang ke kelas sebelum dosen tiba. Jika terlambat, ketuk pintu dan minta izin masuk.</li>
+        <li>Jika tidak dapat hadir, sampaikan izin kepada dosen melalui pesan sopan <em>sebelum</em> jadwal kuliah dimulai.</li>
+        <li>Hindari pulang sebelum perkuliahan resmi berakhir tanpa seizin dosen.</li>
+        <li>Berpakaian rapi dan sopan sesuai peraturan kampus UNM.</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h3>Etika Partisipasi dan Diskusi Kelas</h3>
+      <ul>
+        <li>Aktif berpartisipasi dalam diskusi kelas sebagai tanda rasa hormat terhadap proses pembelajaran.</li>
+        <li>Angkat tangan atau nyatakan ingin berbicara sebelum menyampaikan pendapat atau pertanyaan.</li>
+        <li>Sampaikan argumen berdasarkan data, referensi, dan pemikiran terstruktur — bukan opini semata.</li>
+        <li>Hormati pendapat sesama mahasiswa meskipun berbeda. Ungkapkan ketidaksetujuan dengan cara konstruktif.</li>
+        <li>Dengarkan dengan aktif saat dosen atau teman berbicara. Hindari aktivitas lain yang mengganggu.</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h3>Etika Pengumpulan Tugas dan Ujian</h3>
+      <table class="etika-table">
+        <thead><tr><th>Aspek</th><th>Panduan Etika yang Baik</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Waktu Pengumpulan</strong></td><td>Kumpulkan tugas tepat sebelum batas waktu. Jika ada kendala, komunikasikan kepada dosen SEBELUM deadline.</td></tr>
+          <tr><td><strong>Format Berkas</strong></td><td>Ikuti format yang ditentukan. Contoh: <code style="font-size:0.8rem;background:#f0f0ec;padding:2px 6px;border-radius:3px">NamaLengkap_NIM_NamaTugas.pdf</code></td></tr>
+          <tr><td><strong>Identitas Tugas</strong></td><td>Cantumkan nama, NIM, kelas, mata kuliah, dan tanggal pengumpulan di setiap lembar tugas.</td></tr>
+          <tr><td><strong>Ujian & Kuis</strong></td><td>Kerjakan secara mandiri dan jujur. Tidak membuka buku/HP jika tidak diizinkan. Tidak mencontek.</td></tr>
+          <tr><td><strong>Revisi Tugas</strong></td><td>Tindaklanjuti feedback dosen dengan sungguh-sungguh. Kumpulkan revisi tepat waktu.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB: Integritas -->
+  <div id="integritas" class="tab-panel">
+    <div class="content-block">
+      <h3>Integritas Akademik dan Anti-Plagiarisme</h3>
+      <div class="info-box">
+        <strong>📚 Plagiarisme adalah...</strong> Tindakan menggunakan kata-kata, ide, atau karya orang lain tanpa mencantumkan sumber yang benar — baik disengaja maupun tidak. Plagiarisme adalah pelanggaran etika akademik serius yang dapat berujung pada sanksi akademik.
+      </div>
+      <ul>
+        <li>Selalu cantumkan sumber referensi dengan format sitasi yang benar (APA, IEEE, atau sesuai ketentuan mata kuliah).</li>
+        <li>Gunakan kalimat dan paragraf dengan bahasa sendiri saat mengutip ide dari sumber lain (parafrase).</li>
+        <li>Gunakan tools cek plagiarisme (Turnitin, iThenticate, dll.) sebelum mengumpulkan karya ilmiah.</li>
+        <li>Jangan menyerahkan tugas yang sama untuk dua mata kuliah berbeda tanpa izin dosen (self-plagiarism).</li>
+        <li>Hargai hak cipta karya orang lain. Jangan menggandakan atau mendistribusikan materi tanpa izin.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SKENARIO -->
+<section id="skenario" class="fade-in">
+  <div class="section-label">Bab VI – Skenario Nyata</div>
+  <h2 class="section-title">Skenario & Pilihan Respons</h2>
+  <p class="section-lead">Situasi nyata yang sering terjadi dalam kehidupan akademik. Pelajari pilihan respons yang tepat beserta penjelasannya.</p>
+
+  <!-- Skenario 1 -->
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <div class="scenario-num">Skenario 01 · Komunikasi Langsung</div>
+      <h4>Menghadap Dosen Pembimbing</h4>
+    </div>
+    <div class="scenario-body">
+      <div class="scenario-situation">Kamu perlu bimbingan skripsi hari ini. Ketika tiba di ruangan dosen, pintu tertutup dan terlihat ada tamu lain sedang berbicara dengan dosen pembimbing.</div>
+      <ul class="option-list">
+        <li class="option-item wrong"><span class="opt-tag">A ❌</span> Langsung membuka pintu dan masuk karena merasa pertemuan sudah dijadwalkan.</li>
+        <li class="option-item wrong"><span class="opt-tag">B ❌</span> Mengetuk keras berulang kali sampai dosen membuka pintu.</li>
+        <li class="option-item correct"><span class="opt-tag">C ✅</span> Menunggu dengan sabar di luar. Jika mendesak, kirim pesan singkat yang sopan kepada dosen pembimbing.</li>
+        <li class="option-item correct"><span class="opt-tag">D ✅</span> Menitipkan pesan kepada staf atau sekretariat bahwa kamu sedang menunggu di luar.</li>
+      </ul>
+      <div class="scenario-explanation"><strong>💡 Penjelasan:</strong> Jawaban C dan D adalah yang paling tepat. Dosen memiliki hak atas privasinya saat bertemu dengan orang lain. Menunggu dengan sabar atau memberitahu kehadiranmu adalah bentuk penghargaan terhadap waktu dan ruang privat dosen.</div>
+    </div>
+  </div>
+
+  <!-- Skenario 2 -->
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <div class="scenario-num">Skenario 02 · Komunikasi Langsung</div>
+      <h4>Izin Tidak Masuk Kuliah</h4>
+    </div>
+    <div class="scenario-body">
+      <div class="scenario-situation">Kamu sakit dan tidak bisa hadir di kelas hari ini. Perkuliahan dimulai pukul 08.00 dan sudah pukul 07.45.</div>
+      <ul class="option-list">
+        <li class="option-item wrong"><span class="opt-tag">A ❌</span> Tidak mengirimkan kabar apapun dan langsung absen dari kelas.</li>
+        <li class="option-item wrong"><span class="opt-tag">B ❌</span> Mengirim pesan setelah kelas selesai: "Maaf pak/bu tadi saya tidak masuk".</li>
+        <li class="option-item correct"><span class="opt-tag">C ✅</span> Mengirim pesan izin kepada dosen atau ketua kelas sebelum pukul 07.45 dengan menyertakan identitas dan alasan yang jelas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Skenario 3 -->
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <div class="scenario-num">Skenario 03 · Komunikasi Digital</div>
+      <h4>Meminta Perpanjangan Deadline Tugas</h4>
+    </div>
+    <div class="scenario-body">
+      <div class="scenario-situation">Tugas deadline besok pukul 23.59. Kamu mengalami kendala teknis (laptop rusak) dan membutuhkan perpanjangan waktu pengumpulan.</div>
+      <div class="example-good">
+        <div class="ex-label good">✅ Contoh Pesan yang Tepat</div>
+        Assalamu'alaikum Wr. Wb., Bu Nurfadila. Mohon maaf mengganggu. Saya Andi Rizal, mahasiswa PAP UNM kelas B angkatan 2023. Saya ingin menyampaikan bahwa saya mengalami kendala teknis berupa kerusakan laptop sejak tadi sore sehingga mengalami kesulitan menyelesaikan tugas yang seharusnya dikumpulkan besok. Apakah diperbolehkan mengumpulkan satu hari setelahnya? Saya lampirkan foto kerusakan laptop sebagai bukti. Terima kasih atas pengertian Ibu. Wassalamu'alaikum Wr. Wb.
+      </div>
+    </div>
+  </div>
+
+  <!-- Skenario 4 -->
+  <div class="scenario-card">
+    <div class="scenario-header">
+      <div class="scenario-num">Skenario 04 · Di Kelas</div>
+      <h4>Tidak Setuju dengan Penjelasan Dosen</h4>
+    </div>
+    <div class="scenario-body">
+      <div class="scenario-situation">Dosen menjelaskan konsep tertentu yang menurutmu kurang tepat berdasarkan referensi yang baru saja kamu baca.</div>
+      <ul class="option-list">
+        <li class="option-item wrong"><span class="opt-tag">A ❌</span> Langsung berkata: "Maaf Pak/Bu itu salah, saya baca di buku lain berbeda."</li>
+        <li class="option-item wrong"><span class="opt-tag">B ❌</span> Diam saja tapi membicarakannya kepada teman di grup WhatsApp dengan nada keluhan.</li>
+        <li class="option-item correct"><span class="opt-tag">C ✅</span> Angkat tangan lalu sampaikan: "Permisi Pak/Bu, boleh saya menambahkan? Saya menemukan sudut pandang berbeda dari referensi [sebutkan sumber]. Bagaimana pendapat Bapak/Ibu mengenai hal ini?"</li>
+      </ul>
+      <div class="scenario-explanation"><strong>💡 Penjelasan:</strong> Respons C menunjukkan cara yang konstruktif dan menghormati otoritas dosen sekaligus melatih kemampuan berpikir kritis. Sampaikan pertanyaan atau koreksi dengan santun, berbasis data/referensi, dan dalam konteks diskusi yang produktif.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- KUIS -->
+<div id="kuis">
+  <div class="quiz-inner">
+    <div class="section-label">Kuis SERASI</div>
+    <h2 class="section-title">Seberapa SERASI-kah Kamu?</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:1rem;line-height:1.7;margin-bottom:40px">Jawab pertanyaan berikut dengan jujur untuk mengukur seberapa baik pemahaman etika akademikmu. Pilih jawaban yang paling menggambarkan kebiasaanmu.</p>
+
+    <div class="quiz-card" data-answer="C">
+      <div class="quiz-q">1. Ketika mengirim pesan kepada dosen di WhatsApp, yang pertama kali kamu tuliskan adalah...</div>
+      <ul class="quiz-opts">
+        <li class="quiz-opt" data-opt="A">A. Langsung menuliskan pertanyaan/keperluan tanpa salam.</li>
+        <li class="quiz-opt" data-opt="B">B. Nama dan keperluan singkat.</li>
+        <li class="quiz-opt" data-opt="C">C. Salam, nama lengkap, kelas, dan angkatan sebelum menyampaikan keperluan.</li>
+        <li class="quiz-opt" data-opt="D">D. Hanya mengirimkan kata 'halo' atau 'selamat pagi'.</li>
+      </ul>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-card" data-answer="C">
+      <div class="quiz-q">2. Saat dosen sedang menjelaskan materi di kelas, ponselmu berbunyi. Apa yang kamu lakukan?</div>
+      <ul class="quiz-opts">
+        <li class="quiz-opt" data-opt="A">A. Mengangkat panggilan dan berbicara dengan singkat.</li>
+        <li class="quiz-opt" data-opt="B">B. Mengabaikan dan membiarkan ponsel terus berbunyi.</li>
+        <li class="quiz-opt" data-opt="C">C. Segera mengaktifkan mode senyap/silent tanpa membuka ponsel.</li>
+        <li class="quiz-opt" data-opt="D">D. Keluar kelas sebentar untuk menerima panggilan.</li>
+      </ul>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-card" data-answer="D">
+      <div class="quiz-q">3. Kamu menemukan kesalahan kecil dalam penjelasan dosen. Cara terbaik menyikapinya adalah...</div>
+      <ul class="quiz-opts">
+        <li class="quiz-opt" data-opt="A">A. Langsung memotong penjelasan dosen dan mengoreksi.</li>
+        <li class="quiz-opt" data-opt="B">B. Membicarakannya dengan teman di grup WhatsApp.</li>
+        <li class="quiz-opt" data-opt="C">C. Diam saja dan tidak berbuat apa-apa.</li>
+        <li class="quiz-opt" data-opt="D">D. Mengangkat tangan dan menyampaikan pertanyaan dengan sopan setelah dosen selesai.</li>
+      </ul>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-card" data-answer="A">
+      <div class="quiz-q">4. Deadline pengumpulan tugas jam 23.59 malam ini dan kamu baru selesai pukul 23.45. Apa yang kamu lakukan?</div>
+      <ul class="quiz-opts">
+        <li class="quiz-opt" data-opt="A">A. Segera upload tugas sesuai ketentuan dan konfirmasi pengumpulan.</li>
+        <li class="quiz-opt" data-opt="B">B. Meminta perpanjangan tanpa alasan yang jelas.</li>
+        <li class="quiz-opt" data-opt="C">C. Mengumpulkan esok hari tanpa memberitahu dosen.</li>
+        <li class="quiz-opt" data-opt="D">D. Mengirim tugas lewat email pribadi dosen tanpa memberitahu.</li>
+      </ul>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-card" data-answer="B">
+      <div class="quiz-q">5. Dalam perkuliahan daring via Zoom, dosen meminta seluruh mahasiswa menyalakan kamera. Kamu sedang berada di tempat yang kurang kondusif. Apa tindakanmu?</div>
+      <ul class="quiz-opts">
+        <li class="quiz-opt" data-opt="A">A. Tetap mematikan kamera dan tidak memberitahu siapapun.</li>
+        <li class="quiz-opt" data-opt="B">B. Meminta izin kepada dosen melalui kolom chat dengan menjelaskan kondisimu.</li>
+        <li class="quiz-opt" data-opt="C">C. Keluar dari meeting tanpa pemberitahuan.</li>
+        <li class="quiz-opt" data-opt="D">D. Menyalakan kamera tetapi meninggalkan posisi.</li>
+      </ul>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="submitQuiz()">Lihat Hasil Kuis →</button>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore">0/5</div>
+      <div class="result-msg" id="resultMsg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PENULIS -->
+<section id="penulis" class="fade-in">
+  <div class="section-label">Tentang Penulis</div>
+  <h2 class="section-title">Penyusun Buku Saku SERASI</h2>
+
+  <div class="author-card">
+    <div class="author-avatar">N</div>
+    <div>
+      <div class="author-name">Nurfadila, M.M.</div>
+      <div class="author-role">Dosen Asisten Ahli · Prodi Pendidikan Administrasi Perkantoran, UNM</div>
+      <div class="author-details">
+        <div class="author-detail"><span>NIP</span>199701052025062006</div>
+        <div class="author-detail"><span>Tempat/Tgl Lahir</span>Enrekang, 01 Mei 1997</div>
+        <div class="author-detail"><span>Pangkat/Golongan</span>III/b (Penata Muda Tingkat I)</div>
+        <div class="author-detail"><span>NDH</span>36 · Gel. XII Angkatan LIV Latsar CPNS 2026</div>
+        <div class="author-detail"><span>Mentor</span>Dr. Muh. Darwis, S.Pd., M.Pd., QPOA.</div>
+        <div class="author-detail"><span>Coach</span>Satria Eka Laksana, S.IP., M.AP.</div>
+      </div>
+      <p style="margin-top:16px;font-size:0.85rem;color:var(--text-mid);line-height:1.65">Buku Saku Etika Digital SERASI merupakan inovasi yang dikembangkan sebagai bagian dari kegiatan aktualisasi nilai-nilai dasar BerAKHLAK pada Pelatihan Dasar CPNS Gelombang XII Angkatan LIV Tahun 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>SERASI – Semai Etika, Raih Akademik Sehat Ideal</strong></p>
+  <p>Buku Saku Etika Digital Mahasiswa · Prodi Pendidikan Administrasi Perkantoran</p>
+  <p>Fakultas Ilmu Sosial dan Hukum · Universitas Negeri Makassar · 2026</p>
+  <p style="margin-top:12px;font-size:0.72rem;opacity:0.5">© 2026 Prodi PAP FISH UNM. Hak cipta dilindungi. Diperkenankan mengutip untuk keperluan akademik dengan menyertakan sumber yang jelas.</p>
+</footer>
+
+<script>
+  // Tabs
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Quiz
+  const quizAnswers = { 1: 'C', 2: 'C', 3: 'D', 4: 'A', 5: 'B' };
+  const quizMessages = {
+    5: "Luar biasa! Kamu sangat SERASI 🌟 Teruskan kebiasaan baik ini dan jadilah teladan bagi rekan-rekanmu!",
+    4: "Bagus! Kamu sudah memiliki pemahaman yang baik. Pelajari kembali bagian yang masih kurang dan tingkatkan terus!",
+    3: "Bagus! Kamu sudah memiliki pemahaman yang baik. Pelajari kembali bagian yang masih kurang!",
+    2: "Kamu perlu membaca ulang buku saku ini lebih seksama. Etika akademik adalah investasi terbaik untuk kariermu!",
+    1: "Jangan menyerah! Baca buku saku ini dari awal dan terapkan satu etika per hari.",
+    0: "Jangan menyerah! Baca buku saku ini dari awal. Perubahan kecil yang konsisten membuat perbedaan besar!"
+  };
+
+  document.querySelectorAll('.quiz-opt').forEach(opt => {
+    opt.addEventListener('click', function() {
+      const card = this.closest('.quiz-card');
+      if (card.dataset.answered) return;
+      card.dataset.answered = true;
+      const chosen = this.dataset.opt;
+      const correct = card.dataset.answer;
+      const fb = card.querySelector('.quiz-feedback');
+
+      card.querySelectorAll('.quiz-opt').forEach(o => {
+        if (o.dataset.opt === correct) o.classList.add('show-correct');
+      });
+
+      if (chosen === correct) {
+        this.classList.add('selected-correct');
+        fb.textContent = '✓ Benar! Pilihan yang tepat.';
+        fb.className = 'quiz-feedback correct-fb';
+      } else {
+        this.classList.add('selected-wrong');
+        fb.textContent = `✗ Kurang tepat. Jawaban yang benar adalah ${correct}.`;
+        fb.className = 'quiz-feedback wrong-fb';
+      }
+    });
+  });
+
+  function submitQuiz() {
+    const cards = document.querySelectorAll('.quiz-card');
+    let score = 0;
+    cards.forEach((card, i) => {
+      if (!card.dataset.answered) {
+        // reveal correct
+        const correct = card.dataset.answer;
+        card.querySelectorAll('.quiz-opt').forEach(o => {
+          if (o.dataset.opt === correct) o.classList.add('show-correct');
+        });
+        card.dataset.answered = true;
+        const fb = card.querySelector('.quiz-feedback');
+        fb.textContent = `Jawaban: ${correct}`;
+        fb.className = 'quiz-feedback wrong-fb';
+      } else {
+        const correct = card.dataset.answer;
+        const selected = card.querySelector('.selected-correct');
+        if (selected) score++;
+      }
+    });
+
+    // recount
+    score = 0;
+    cards.forEach(card => {
+      if (card.querySelector('.selected-correct')) score++;
+    });
+
+    const result = document.getElementById('quizResult');
+    document.getElementById('resultScore').textContent = score + '/5';
+    document.getElementById('resultMsg').textContent = quizMessages[score];
+    result.style.display = 'block';
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
